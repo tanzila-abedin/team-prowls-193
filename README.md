@@ -4,6 +4,6 @@
 ### Participants :
 1. Tanzila Abedin
 2. Marijan Brvar
-3. Francis 
-4. Onur
-5. Tongoona
+3. Francis Obetta
+4. Onur Onat Surmeli
+5. Tongoona Mujera
