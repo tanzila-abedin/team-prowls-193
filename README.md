@@ -1,4 +1,7 @@
 # team-prowls-193
+
+![](https://img.shields.io/badge/Microverse-blueviolet)      
+
 ## Peer-to-peer code review session 
  The team will spend each morning solving coding challenges linked on the dashboard. 
 ### Participants :
