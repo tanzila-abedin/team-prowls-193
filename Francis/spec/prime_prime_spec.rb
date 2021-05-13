@@ -1,5 +1,6 @@
 require "base64"
 
+
 encoded_data = "cmVxdWlyZSAnLi9jaGFsbGVuZ2UucmInCgpSU3BlYy5kZXNjcmliZSAnVW5p
 dFRlc3RzJyBkbwoKICBpdCAnYXJyYXlfb2ZfZWxldmVuX3Bvc2l0aW9ucycg
 ZG8KCiAgICAjIEZhaWx1cmUgbWVzc2FnZTogCiAgICAjIE1ldGhvZCBjYWxs
@@ -49,4 +50,4 @@ KDkyOSkKCiAgZW5kCgplbmQK
 
 data = Base64.decode64(encoded_data)
 
-p data
+eval(data)
