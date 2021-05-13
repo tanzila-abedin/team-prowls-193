@@ -1,31 +1,38 @@
-require './challenges/find_duplicates.rb'
+require "base64"
 
-RSpec.describe 'UnitTests' do
-  it 'array_of_fifteen_positions' do
-    # Failure message:
-    # Method called: find_duplicates([3, 443, 67, 25, 501, 917, 23, 888, -402, 235, 377, 99, 311, 443, 1])
-    arr = [3, 443, 67, 25, 501, 917, 23, 888, -402, 235, 377, 99, 311, 443, 1]
-    expect(find_duplicates(arr)).to eq([443])
-  end
 
-  it 'array_of_nine_positions' do
-    # Failure message:
-    # Method called: find_duplicates([4376, -345, -345, 4376, -345, 84945, 4376, -345, -26509])
-    arr = [4376, -345, -345, 4376, -345, 84945, 4376, -345, -26509]
-    expect(find_duplicates(arr)).to eq([-345, 4376, -345, 4376, -345])
-  end
+encoded_data = "cmVxdWlyZSAnLi9jaGFsbGVuZ2UucmInCgpSU3BlYy5kZXNjcmliZSAnVW5p
+dFRlc3RzJyBkbwoKICBpdCAnYXJyYXlfb2ZfZmlmdGVlbl9wb3NpdGlvbnMn
+IGRvCiAgICAjIEZhaWx1cmUgbWVzc2FnZTogCiAgICAjIE1ldGhvZCBjYWxs
+ZWQ6IGZpbmRfZHVwbGljYXRlcyhbMywgNDQzLCA2NywgMjUsIDUwMSwgOTE3
+LCAyMywgODg4LCAtNDAyLCAyMzUsIDM3NywgOTksIDMxMSwgNDQzLCAxXSkK
+ICAgIGFyciA9IFszLCA0NDMsIDY3LCAyNSwgNTAxLCA5MTcsIDIzLCA4ODgs
+IC00MDIsIDIzNSwgMzc3LCA5OSwgMzExLCA0NDMsIDFdCiAgICBleHBlY3Qo
+ZmluZF9kdXBsaWNhdGVzKGFycikpLnRvIGVxKFs0NDNdKQogIGVuZAogIAog
+IGl0ICdhcnJheV9vZl9uaW5lX3Bvc2l0aW9ucycgZG8KICAgICMgRmFpbHVy
+ZSBtZXNzYWdlOiAKICAgICMgTWV0aG9kIGNhbGxlZDogZmluZF9kdXBsaWNh
+dGVzKFs0Mzc2LCAtMzQ1LCAtMzQ1LCA0Mzc2LCAtMzQ1LCA4NDk0NSwgNDM3
+NiwgLTM0NSwgLTI2NTA5XSkKICAgIGFyciA9IFs0Mzc2LCAtMzQ1LCAtMzQ1
+LCA0Mzc2LCAtMzQ1LCA4NDk0NSwgNDM3NiwgLTM0NSwgLTI2NTA5XQogICAg
+ZXhwZWN0KGZpbmRfZHVwbGljYXRlcyhhcnIpKS50byBlcShbLTM0NSwgNDM3
+NiwgLTM0NSwgNDM3NiwgLTM0NV0pCiAgZW5kCiAgCiAgaXQgJ2FycmF5X29m
+X2VsZXZlbl9wb3NpdGlvbnMnIGRvCiAgICAjIEZhaWx1cmUgbWVzc2FnZTog
+CiAgICAjIE1ldGhvZCBjYWxsZWQ6IGZpbmRfZHVwbGljYXRlcyhbMjM2Nywg
+LTY1MzI2LCAxMzQsIC0xODUwMDcsIDMyOTEsIDc4MzIsIC02NTMyNiwgNzg5
+LCA5ODAsIC0zMjg5LCAzNDkwXSkKICAgIGFyciA9IFsyMzY3LCAtNjUzMjYs
+IDEzNCwgLTE4NTAwNywgMzI5MSwgNzgzMiwgLTY1MzI2LCA3ODksIDk4MCwg
+LTMyODksIDM0OTBdCiAgICBleHBlY3QoZmluZF9kdXBsaWNhdGVzKGFycikp
+LnRvIGVxKFstNjUzMjZdKQogIGVuZAogIAogIGl0ICdhcnJheV9vZl90d2Vu
+dHlfcG9zaXRpb25zJyBkbwogICAgIyBGYWlsdXJlIG1lc3NhZ2U6IAogICAg
+IyBNZXRob2QgY2FsbGVkOiBmaW5kX2R1cGxpY2F0ZXMoWzg1LCAxMDUsIDkw
+LCAyNzUsIDMwLCAxMDAsIDI3NSwgMTEwLCAxMjUsIDEzMCwgMjc1LCAxMCwg
+MjAsIDMwLCA0NSwgNTAsIDI3NSwgNjUsIDcwLCAxMTFdKQogICAgYXJyID0g
+Wzg1LCAxMDUsIDkwLCAyNzUsIDMwLCAxMDAsIDI3NSwgMTEwLCAxMjUsIDEz
+MCwgMjc1LCAxMCwgMjAsIDMwLCA0NSwgNTAsIDI3NSwgNjUsIDcwLCAxMTFd
+CiAgICBleHBlY3QoZmluZF9kdXBsaWNhdGVzKGFycikpLnRvIGVxKFsyNzUs
+IDI3NSwgMzAsIDI3NV0pCiAgZW5kCgplbmQK
+"
 
-  it 'array_of_eleven_positions' do
-    # Failure message:
-    # Method called: find_duplicates([2367, -65326, 134, -185007, 3291, 7832, -65326, 789, 980, -3289, 3490])
-    arr = [2367, -65326, 134, -185007, 3291, 7832, -65326, 789, 980, -3289, 3490]
-    expect(find_duplicates(arr)).to eq([-65326])
-  end
+data = Base64.decode64(encoded_data)
 
-  it 'array_of_twenty_positions' do
-    # Failure message:
-    # Method called: find_duplicates([85, 105, 90, 275, 30, 100, 275, 110, 125, 130, 275, 10, 20, 30, 45, 50, 275, 65, 70, 111])
-    arr = [85, 105, 90, 275, 30, 100, 275, 110, 125, 130, 275, 10, 20, 30, 45, 50, 275, 65, 70, 111]
-    expect(find_duplicates(arr)).to eq([275, 275, 30, 275])
-  end
-end
+eval(data)

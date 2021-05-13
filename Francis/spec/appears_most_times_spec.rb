@@ -1,38 +1,41 @@
-require './challenges/appears_most_times.rb'
+require "base64"
 
-RSpec.describe 'UnitTests' do\
-  it 'array_of_eleven_positions' do
-    # Failure message:
-    # Method called: appears_most_times([2367, -65326, 134, -185007, 3291, 7832, -65326, 789, 980, -3289, 3490])
-    arr = [2367, -65326, 134, -185007, 3291, 7832, -65326, 789, 980, -3289, 3490]
-    expect(appears_most_times(arr)).to eq(-65326)
-  end
 
-  it 'array_of_twenty_positions' do
-    # Failure message:
-    # Method called: appears_most_times([85, 105, 90, 275, 30, 100, 275, 110, 125, 130, 275, 10, 20, 30, 45, 50, 275, 65, 70, 111])
-    arr = [85, 105, 90, 275, 30, 100, 275, 110, 125, 130, 275, 10, 20, 30, 45, 50, 275, 65, 70, 111]
-    expect(appears_most_times(arr)).to eq(275)
-  end
+encoded_data = "cmVxdWlyZSAnLi9jaGFsbGVuZ2UucmInCgpSU3BlYy5kZXNjcmliZSAnVW5p
+dFRlc3RzJyBkbwoKICBpdCAnYXJyYXlfb2ZfZWxldmVuX3Bvc2l0aW9ucycg
+ZG8KICAgICMgRmFpbHVyZSBtZXNzYWdlOiAKICAgICMgTWV0aG9kIGNhbGxl
+ZDogYXBwZWFyc19tb3N0X3RpbWVzKFsyMzY3LCAtNjUzMjYsIDEzNCwgLTE4
+NTAwNywgMzI5MSwgNzgzMiwgLTY1MzI2LCA3ODksIDk4MCwgLTMyODksIDM0
+OTBdKQogICAgYXJyID0gWzIzNjcsIC02NTMyNiwgMTM0LCAtMTg1MDA3LCAz
+MjkxLCA3ODMyLCAtNjUzMjYsIDc4OSwgOTgwLCAtMzI4OSwgMzQ5MF0KICAg
+IGV4cGVjdChhcHBlYXJzX21vc3RfdGltZXMoYXJyKSkudG8gZXEoLTY1MzI2
+KQogIGVuZAogIAogIGl0ICdhcnJheV9vZl90d2VudHlfcG9zaXRpb25zJyBk
+bwogICAgIyBGYWlsdXJlIG1lc3NhZ2U6IAogICAgIyBNZXRob2QgY2FsbGVk
+OiBhcHBlYXJzX21vc3RfdGltZXMoWzg1LCAxMDUsIDkwLCAyNzUsIDMwLCAx
+MDAsIDI3NSwgMTEwLCAxMjUsIDEzMCwgMjc1LCAxMCwgMjAsIDMwLCA0NSwg
+NTAsIDI3NSwgNjUsIDcwLCAxMTFdKQogICAgYXJyID0gWzg1LCAxMDUsIDkw
+LCAyNzUsIDMwLCAxMDAsIDI3NSwgMTEwLCAxMjUsIDEzMCwgMjc1LCAxMCwg
+MjAsIDMwLCA0NSwgNTAsIDI3NSwgNjUsIDcwLCAxMTFdCiAgICBleHBlY3Qo
+YXBwZWFyc19tb3N0X3RpbWVzKGFycikpLnRvIGVxKDI3NSkKICBlbmQKICAK
+ICBpdCAnYXJyYXlfb2Zfc2l4X3Bvc2l0aW9ucycgZG8KICAgICMgRmFpbHVy
+ZSBtZXNzYWdlOiAKICAgICMgTWV0aG9kIGNhbGxlZDogYXBwZWFyc19tb3N0
+X3RpbWVzKFsxMCwgMTAsIDIwLCAzMCwgMjAsIDIwXSkKICAgIGFyciA9IFsx
+MCwgMTAsIDIwLCAzMCwgMjAsIDIwXQogICAgZXhwZWN0KGFwcGVhcnNfbW9z
+dF90aW1lcyhhcnIpKS50byBlcSgyMCkKICBlbmQKICAKICBpdCAnYXJyYXlf
+b2ZfZWlnaHRfcG9zaXRpb25zJyBkbwogICAgIyBGYWlsdXJlIG1lc3NhZ2U6
+IAogICAgIyBNZXRob2QgY2FsbGVkOiBhcHBlYXJzX21vc3RfdGltZXMoWzMs
+IDIsIDE5LCA0LCAxOSwgMTksIDMsIDJdKQogICAgYXJyID0gWzMsIDIsIDE5
+LCA0LCAxOSwgMTksIDMsIDJdCiAgICBleHBlY3QoYXBwZWFyc19tb3N0X3Rp
+bWVzKGFycikpLnRvIGVxKDE5KQogIGVuZAogIAogIGl0ICdhcnJheV9vZl90
+ZW5fcG9zaXRpb25zJyBkbwogICAgIyBGYWlsdXJlIG1lc3NhZ2U6IAogICAg
+IyBNZXRob2QgY2FsbGVkOiBhcHBlYXJzX21vc3RfdGltZXMoWzM1OTQ5NzYs
+IDIzNDAsIDM1OTQ5NzYsIDc0MzkwLCAtNDUzODk0LCAzMjA3NiwgNDIsIDc4
+ODgsIC0yMTA4NSwgLTMyMDU2Nl0pCiAgICBhcnIgPSBbMzU5NDk3NiwgMjM0
+MCwgMzU5NDk3NiwgNzQzOTAsIC00NTM4OTQsIDMyMDc2LCA0MiwgNzg4OCwg
+LTIxMDg1LCAtMzIwNTY2XQogICAgZXhwZWN0KGFwcGVhcnNfbW9zdF90aW1l
+cyhhcnIpKS50byBlcSgzNTk0OTc2KQogIGVuZAoKZW5kCg==
+"
 
-  it 'array_of_six_positions' do
-    # Failure message:
-    # Method called: appears_most_times([10, 10, 20, 30, 20, 20])
-    arr = [10, 10, 20, 30, 20, 20]
-    expect(appears_most_times(arr)).to eq(20)
-  end
+data = Base64.decode64(encoded_data)
 
-  it 'array_of_eight_positions' do
-    # Failure message:
-    # Method called: appears_most_times([3, 2, 19, 4, 19, 19, 3, 2])
-    arr = [3, 2, 19, 4, 19, 19, 3, 2]
-    expect(appears_most_times(arr)).to eq(19)
-  end
-
-  it 'array_of_ten_positions' do
-    # Failure message:
-    # Method called: appears_most_times([3594976, 2340, 3594976, 74390, -453894, 32076, 42, 7888, -21085, -320566])
-    arr = [3594976, 2340, 3594976, 74390, -453894, 32076, 42, 7888, -21085, -320566]
-    expect(appears_most_times(arr)).to eq(3594976)
-  end
-end
+eval(data)
